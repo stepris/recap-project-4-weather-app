@@ -19,11 +19,13 @@ function App() {
     ]);
   }
 
+  console.log(activities);
+
   return (
     <div className="App">
       <p>Welcome to our new weather app</p>
       <Form onAddActivity={handleAddActivity} />
-      <List />
+      <List activities={activities} />
     </div>
   );
 }

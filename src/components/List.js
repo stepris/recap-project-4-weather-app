@@ -1,7 +1,9 @@
-export default function List() {
+export default function List({ activities }) {
   return (
     <ul>
-      <li>List 1</li>
+      {activities.map((activity) => (
+        <li>{activity.name}</li>
+      ))}
     </ul>
   );
 }
