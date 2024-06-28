@@ -1,10 +1,24 @@
 export default function Form({ onAddActivity }) {
   function handleSubmit(event) {
     event.preventDefault();
-    const dataForm = new FormData(event.target);
-    console.dir(event.target);
-    const data = Object.fromEntries(dataForm);
-    onAddActivity(data);
+    const data = {
+      isForGoodWeather: event.target.isForGoodWeather.checked,
+      name: event.target.name.value,
+    };
+    // console.log(event.target.name.value);
+    console.dir(event.target.isForGoodWeather);
+    console.log("Self built object:", data);
+
+    // const dataForm = new FormData(event.target);
+    // const data = Object.fromEntries(dataForm);
+    // console.log("Data Object before:", data);
+    // data.isForGoodWeather = event.target.isForGoodWeather.checked;
+    // console.log("Data Object before:", data);
+    // console.dir(event.target);
+    // console.log("Event:", event);
+    // console.log("Event target:", event.target);
+    // console.log("Checkbox: ", event.target.isForGoodWeather.checked);
+    // onAddActivity(data);
   }
   return (
     <form onSubmit={handleSubmit}>
