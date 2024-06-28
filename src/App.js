@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import List from "./components/List";
@@ -27,9 +27,9 @@ function App() {
 
   return (
     <div className="App">
-      <p>Welcome to our new weather app</p>
+      <h1>Welcome to our new weather app</h1>
       <Form onAddActivity={handleAddActivity} />
-      <List activities={filteredList} />
+      <List activities={filteredList} isGoodWeather={isGoodWeather} />
     </div>
   );
 }
