@@ -10,6 +10,8 @@ export default function Form({ onAddActivity }) {
     };
 
     onAddActivity(newActivity);
+    event.target.reset();
+    event.target.elements.name.focus();
   }
 
   return (

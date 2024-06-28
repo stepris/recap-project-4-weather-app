@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
+import List from "./components/List";
 import { uid } from "uid";
 function App() {
   const [activities, setActivities] = useState([]);
@@ -18,6 +19,7 @@ function App() {
     <div className="App">
       <p>Welcome to our new weather app</p>
       <Form onAddActivity={handleAddActivity} />
+      <List />
     </div>
   );
 }
