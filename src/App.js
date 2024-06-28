@@ -6,11 +6,6 @@ function App() {
   const [activities, setActivities] = useState([]);
 
   function handleAddActivity(newActivity) {
-    //st newAct  newActivity.id = uid();
-
-    // console.log(newActivityWithId);
-
-    //console.log(newActivity);
     setActivities([
       ...activities,
       {
@@ -19,7 +14,6 @@ function App() {
       },
     ]);
   }
-  console.log(activities);
   return (
     <div className="App">
       <p>Welcome to our new weather app</p>
