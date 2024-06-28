@@ -2,13 +2,13 @@ import { useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 function App() {
-  const [activity, setActivity] = useState("");
+  const [activities, setActivities] = useState([]);
 
   function handleAddActivity(newActivity) {
-    setActivity(newActivity);
+    setActivities([...activities, newActivity]);
   }
 
-  console.log(activity);
+  console.log(activities);
 
   return (
     <div className="App">

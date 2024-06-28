@@ -2,11 +2,11 @@ export default function Form({ onAddActivity }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
+    // const formData = new FormData(event.target);
 
     const newActivity = {
       isForGoodWeather: event.target.isForGoodWeather.checked,
-      name: formData.get("name"),
+      name: event.target.name.value,
     };
 
     onAddActivity(newActivity);
