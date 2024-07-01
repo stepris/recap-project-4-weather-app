@@ -17,22 +17,25 @@ function App() {
         "https://example-apis.vercel.app/api/weather"
       );
       const data = await response.json();
+
       setWeather({
         condition: data.condition,
         temperature: data.temperature,
         isGoodWeather: data.isGoodWeather,
       });
     }
-    getWeather();
+
+    const interval = setInterval(getWeather, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
-  console.log(weather);
-
-  //const isGoodWeather = true;
   const filteredActivities = activities.filter((activity) => {
     return activity.isForGoodWeather === weather.isGoodWeather;
   });
-  console.log(filteredActivities);
+
   function handleAddActivity(newActivity) {
     setActivities([
       ...activities,
@@ -44,7 +47,6 @@ function App() {
   }
 
   function handleDeleteActivity(idToDelete) {
-    console.log("Hello from the function HandleDeleteActivity");
     setActivities(
       activities.filter((activity) => {
         return activity.id !== idToDelete;
