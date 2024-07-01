@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import List from "./components/List";
@@ -9,6 +9,20 @@ function App() {
   const [activities, setActivities] = useLocalStorageState("activities", {
     defaultValue: [],
   });
+  const [weather, setWeather] = useState({});
+
+  useEffect(() => {
+    async function getWeather() {
+      const response = await fetch(
+        "https://example-apis.vercel.app/api/weather"
+      );
+      const data = await response.json();
+      setWeather({ condition: data.condition, temperature: data.temperature });
+    }
+    getWeather();
+  }, []);
+
+  console.log(weather);
 
   const isGoodWeather = true;
   const filteredActivities = activities.filter((activity) => {
@@ -27,6 +41,17 @@ function App() {
 
   return (
     <div className="App">
+      <div
+        style={{
+          width: "360px",
+          height: "80px",
+          border: "1px solid red",
+          fontSize: "3rem",
+        }}
+      >
+        <span style={{ paddingLeft: "40px" }}>{weather.temperature}</span>
+        <span style={{ paddingLeft: "80px" }}>{weather.condition}</span>
+      </div>
       <h1>Welcome to our new weather app</h1>
       <Form onAddActivity={handleAddActivity} />
       <List
