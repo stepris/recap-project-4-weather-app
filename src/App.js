@@ -43,6 +43,15 @@ function App() {
     ]);
   }
 
+  function handleDeleteActivity(idToDelete) {
+    console.log("Hello from the function HandleDeleteActivity");
+    setActivities(
+      activities.filter((activity) => {
+        return activity.id !== idToDelete;
+      })
+    );
+  }
+
   return (
     <div className="App">
       <h1>Welcome to our new weather app</h1>
@@ -62,6 +71,7 @@ function App() {
       <List
         filteredActivities={filteredActivities}
         isGoodWeather={weather.isGoodWeather}
+        onDeleteActivity={handleDeleteActivity}
       />
       <Form onAddActivity={handleAddActivity} />
     </div>
