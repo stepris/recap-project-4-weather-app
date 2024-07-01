@@ -20,7 +20,9 @@ export default function Form({ onAddActivity }) {
       <label htmlFor="name">Name:</label>
       <input type="text" id="name" name="name" />
       <br />
-      <label htmlFor="isForGoodWeather">Do we have good weather?</label>
+      <label htmlFor="isForGoodWeather">
+        Is this activity for good weather?
+      </label>
       <input
         type="checkbox"
         id="isForGoodWeather"
