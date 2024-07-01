@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import List from "./components/List";
@@ -9,12 +9,30 @@ function App() {
   const [activities, setActivities] = useLocalStorageState("activities", {
     defaultValue: [],
   });
+  const [weather, setWeather] = useState({});
 
-  const isGoodWeather = true;
-  const filteredList = activities.filter((activity) => {
-    return activity.isForGoodWeather === isGoodWeather;
+  useEffect(() => {
+    async function getWeather() {
+      const response = await fetch(
+        "https://example-apis.vercel.app/api/weather"
+      );
+      const data = await response.json();
+      setWeather({
+        condition: data.condition,
+        temperature: data.temperature,
+        isGoodWeather: data.isGoodWeather,
+      });
+    }
+    getWeather();
+  }, []);
+
+  console.log(weather);
+
+  //const isGoodWeather = true;
+  const filteredActivities = activities.filter((activity) => {
+    return activity.isForGoodWeather === weather.isGoodWeather;
   });
-
+  console.log(filteredActivities);
   function handleAddActivity(newActivity) {
     setActivities([
       ...activities,
@@ -28,8 +46,24 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome to our new weather app</h1>
+      <div
+        style={{
+          width: "360px",
+          height: "80px",
+          border: "1px solid red",
+          fontSize: "3rem",
+        }}
+      >
+        <span style={{ paddingLeft: "40px" }}>
+          {weather.temperature + "°C"}
+        </span>
+        <span style={{ paddingLeft: "80px" }}>{weather.condition}</span>
+      </div>
+      <List
+        filteredActivities={filteredActivities}
+        isGoodWeather={weather.isGoodWeather}
+      />
       <Form onAddActivity={handleAddActivity} />
-      <List activities={filteredList} isGoodWeather={isGoodWeather} />
     </div>
   );
 }

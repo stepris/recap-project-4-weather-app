@@ -1,4 +1,4 @@
-export default function List({ activities, isGoodWeather }) {
+export default function List({ filteredActivities, isGoodWeather }) {
   return (
     <>
       {isGoodWeather === true ? (
@@ -7,7 +7,7 @@ export default function List({ activities, isGoodWeather }) {
         <h3>Bad weather outside! Here's what you can do now:</h3>
       )}
       <ul>
-        {activities.map((activity) => {
+        {filteredActivities.map((activity) => {
           return <li key={activity.id}>{activity.name}</li>;
         })}
       </ul>
