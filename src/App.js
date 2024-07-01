@@ -17,16 +17,20 @@ function App() {
         "https://example-apis.vercel.app/api/weather"
       );
       const data = await response.json();
-      setWeather({ condition: data.condition, temperature: data.temperature });
+      setWeather({
+        condition: data.condition,
+        temperature: data.temperature,
+        isGoodWeather: data.isGoodWeather,
+      });
     }
     getWeather();
   }, []);
 
   console.log(weather);
 
-  const isGoodWeather = true;
+  //const isGoodWeather = true;
   const filteredActivities = activities.filter((activity) => {
-    return activity.isForGoodWeather === isGoodWeather;
+    return activity.isForGoodWeather === weather.isGoodWeather;
   });
   console.log(filteredActivities);
   function handleAddActivity(newActivity) {
@@ -49,14 +53,16 @@ function App() {
           fontSize: "3rem",
         }}
       >
-        <span style={{ paddingLeft: "40px" }}>{weather.temperature}</span>
+        <span style={{ paddingLeft: "40px" }}>
+          {weather.temperature + "°C"}
+        </span>
         <span style={{ paddingLeft: "80px" }}>{weather.condition}</span>
       </div>
       <h1>Welcome to our new weather app</h1>
       <Form onAddActivity={handleAddActivity} />
       <List
         filteredActivities={filteredActivities}
-        isGoodWeather={isGoodWeather}
+        isGoodWeather={weather.isGoodWeather}
       />
     </div>
   );
