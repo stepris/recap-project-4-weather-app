@@ -45,6 +45,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Welcome to our new weather app</h1>
       <div
         style={{
           width: "360px",
@@ -58,12 +59,11 @@ function App() {
         </span>
         <span style={{ paddingLeft: "80px" }}>{weather.condition}</span>
       </div>
-      <h1>Welcome to our new weather app</h1>
-      <Form onAddActivity={handleAddActivity} />
       <List
         filteredActivities={filteredActivities}
         isGoodWeather={weather.isGoodWeather}
       />
+      <Form onAddActivity={handleAddActivity} />
     </div>
   );
 }
