@@ -1,13 +1,13 @@
-export default function WeatherDataElement({
-  temperature,
-  condition,
-  weather,
-  children,
-}) {
-  return (
-    <span>
-      {children}
-      {weather.condition}
-    </span>
-  );
+export default function WeatherDataElement(props) {
+  /*   const props = {
+    temperature: 24˚,
+    children: [˚C Emoji],
+  } */
+  console.log(weather);
+
+  const children = props.children;
+
+  // const { children } = props;
+
+  return <span>{}</span>;
 }

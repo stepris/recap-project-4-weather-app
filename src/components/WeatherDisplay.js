@@ -11,8 +11,12 @@ export default function WeatherDisplay({ weather }) {
     >
     </div>*/
     <>
-      <WeatherDataElement weather={weather}>hi testing</WeatherDataElement>
-      {/*<WeatherDataElement>°C</WeatherDataElement>*/}
+      {/* <WeatherDataElement>{weather.temperature} ˚C</WeatherDataElement>
+      <WeatherDataElement>{weather.condition}</WeatherDataElement> */}
+      {/* {props.children} */}
+      <WeatherDataElement temperature={weather.temperature}>
+        ˚C {weather.condition}
+      </WeatherDataElement>
     </>
   );
 }
