@@ -3,9 +3,9 @@ export default function WeatherDataElement(props) {
     temperature: 24˚,
     children: [˚C Emoji],
   } */
-  console.log(weather);
+  // console.log();
 
-  const children = props.children;
+  // const children = props.children;
 
   // const { children } = props;
 
