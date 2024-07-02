@@ -4,27 +4,40 @@ import Form from "./components/Form";
 import List from "./components/List";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
-import WeatherDisplay from "./components/WeatherDisplay";
-import WeatherDataElement from "./components/WeatherDataElement";
+import WeatherInfo from "./components/WeatherInfo";
+import Suggestion from "./components/Suggestion";
 
 function App() {
   const [activities, setActivities] = useLocalStorageState("activities", {
     defaultValue: [],
   });
   const [weather, setWeather] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function getWeather() {
-      const response = await fetch(
-        "https://example-apis.vercel.app/api/weather"
-      );
-      const data = await response.json();
+      try {
+        const response = await fetch(
+          "https://example-apis.vercel.app/api/weather"
+        );
 
-      setWeather({
-        condition: data.condition,
-        temperature: data.temperature,
-        isGoodWeather: data.isGoodWeather,
-      });
+        if (!response.ok) {
+          throw new Error("Failed to fetch weather data");
+        }
+
+        const data = await response.json();
+
+        setWeather({
+          condition: data.condition,
+          temperature: data.temperature,
+          isGoodWeather: data.isGoodWeather,
+        });
+
+        setError(null);
+      } catch (error) {
+        setError("Sorry, we couldn't fetch any weather data.");
+        console.log(error);
+      }
     }
 
     const interval = setInterval(getWeather, 5000);
@@ -58,17 +71,20 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Welcome to our new weather app</h1>
-      <WeatherDisplay weather={weather}>
-        {/* <WeatherDataElement>{weather.temperature} ˚C</WeatherDataElement> */}
-        {/* <WeatherDataElement>{weather.condition}</WeatherDataElement> */}
-      </WeatherDisplay>
-      <List
-        filteredActivities={filteredActivities}
-        isGoodWeather={weather.isGoodWeather}
-        onDeleteActivity={handleDeleteActivity}
-      />
-      <Form onAddActivity={handleAddActivity} />
+      <h1>Welcome to our new weather and activities app</h1>
+      {error ? (
+        <h2>{error}</h2>
+      ) : (
+        <>
+          <WeatherInfo weather={weather} />
+          <Suggestion weather={weather} />
+          <List
+            filteredActivities={filteredActivities}
+            onDeleteActivity={handleDeleteActivity}
+          />
+          <Form onAddActivity={handleAddActivity} />
+        </>
+      )}
     </div>
   );
 }
