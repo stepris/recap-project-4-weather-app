@@ -1,4 +1,45 @@
-ul,
-ol {
-  list-style-type: none;
+@font-face {
+  font-family: "PlaywriteGBS";
+  src: url("./fonts/Playwrite_GB_S/PlaywriteGBS-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --highlight-color: rgba(36, 13, 113, 0.35);
+  --background-color: rgb(1, 1, 40);
+  --text-color: #e7e7e7;
+  --close-button-color: #ff0000;
+}
+
+body {
+  font-family: "PlaywriteGBS", sans-serif;
+  color: var(--text-color);
+}
+
+.app {
+  background-color: var(--background-color);
+  border-radius: 25px;
+  max-width: 500px;
+  min-width: 250px;
+  margin: 40px;
+}
+
+.headline {
+  font-size: 1.4rem;
+  font-weight: 300;
+  text-align: center;
+  padding: 10px 20px;
+  margin: 0 auto;
+}
+
+.welcome {
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-align: center;
+  padding: 10px 20px;
+  margin: 0 auto;
 }

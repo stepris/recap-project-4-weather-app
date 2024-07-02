@@ -1,15 +1,18 @@
 .weatherInfo {
   display: flex;
-  justify-content: space-between;
-  width: 150px;
-  border: 1px solid red;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+  margin: 0 auto;
   font-size: 40px;
 }
 
 .weatherInfo__condition {
   display: block;
+  font-size: 1.5em;
 }
 
 .weatherInfo__temperature {
   display: block;
+  font-weight: bold;
 }

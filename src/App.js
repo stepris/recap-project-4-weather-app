@@ -70,8 +70,9 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Welcome to our new weather and activities app</h1>
+    <div className="app">
+      <h1 className="headline">Weather & Activities App</h1>
+      <h2 className="welcome">Welcome to our new app</h2>
       {error ? (
         <h2>{error}</h2>
       ) : (
