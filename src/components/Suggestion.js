@@ -1,6 +1,6 @@
 import "./Suggestion.css";
 
-export default function Suggestion({ weather }) {
+export default function Suggestion({ weather, isWeatherDataEmpty }) {
   const { isGoodWeather } = weather;
   const suggestion =
     isGoodWeather === true ? (
@@ -11,5 +11,5 @@ export default function Suggestion({ weather }) {
       </h3>
     );
 
-  return suggestion;
+  return !isWeatherDataEmpty ? suggestion : null;
 }

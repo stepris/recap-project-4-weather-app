@@ -6,6 +6,13 @@
   margin: 0 auto;
   font-size: 40px;
 }
+.weatherInfo__loading {
+  display: block;
+  font-size: 1.4em;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  text-align: center;
+}
 
 .weatherInfo__condition {
   display: block;

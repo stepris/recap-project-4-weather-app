@@ -69,6 +69,8 @@ function App() {
     );
   }
 
+  const isWeatherDataEmpty = Object.keys(weather).length === 0;
+
   return (
     <div className="app">
       <h1 className="headline">Weather & Activities App</h1>
@@ -77,8 +79,14 @@ function App() {
         <h2>{error}</h2>
       ) : (
         <>
-          <WeatherInfo weather={weather} />
-          <Suggestion weather={weather} />
+          <WeatherInfo
+            weather={weather}
+            isWeatherDataEmpty={isWeatherDataEmpty}
+          />
+          <Suggestion
+            weather={weather}
+            isWeatherDataEmpty={isWeatherDataEmpty}
+          />
           <List
             filteredActivities={filteredActivities}
             onDeleteActivity={handleDeleteActivity}
