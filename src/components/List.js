@@ -1,3 +1,5 @@
+import { InfoHeading } from "./InfoHeading";
+
 export default function List({
   filteredActivities,
   isGoodWeather,
@@ -5,11 +7,7 @@ export default function List({
 }) {
   return (
     <>
-      {isGoodWeather === true ? (
-        <h3>The weather is awesome! Go outside and:</h3>
-      ) : (
-        <h3>Bad weather outside! Here's what you can do now:</h3>
-      )}
+      <InfoHeading isGoodWeather={isGoodWeather}></InfoHeading>
       <ul>
         {filteredActivities.map((activity) => {
           return (
@@ -19,7 +17,7 @@ export default function List({
                 type="button"
                 onClick={() => onDeleteActivity(activity.id)}
               >
-                delete
+                x
               </button>
             </li>
           );

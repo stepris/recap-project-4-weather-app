@@ -5,7 +5,6 @@ import List from "./components/List";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 import WeatherDisplay from "./components/WeatherDisplay";
-import WeatherDataElement from "./components/WeatherDataElement";
 
 function App() {
   const [activities, setActivities] = useLocalStorageState("activities", {
@@ -59,10 +58,7 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome to our new weather app</h1>
-      <WeatherDisplay weather={weather}>
-        {/* <WeatherDataElement>{weather.temperature} ˚C</WeatherDataElement> */}
-        {/* <WeatherDataElement>{weather.condition}</WeatherDataElement> */}
-      </WeatherDisplay>
+      <WeatherDisplay weather={weather}></WeatherDisplay>
       <List
         filteredActivities={filteredActivities}
         isGoodWeather={weather.isGoodWeather}

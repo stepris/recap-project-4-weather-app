@@ -2,8 +2,6 @@ export default function Form({ onAddActivity }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    // const formData = new FormData(event.target);
-
     const newActivity = {
       isForGoodWeather: event.target.isForGoodWeather.checked,
       name: event.target.name.value,
