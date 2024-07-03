@@ -2,15 +2,18 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import List from "./components/List";
-import { uid } from "uid";
+// import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 import WeatherDisplay from "./components/WeatherDisplay";
+import { handleAddActivity } from "./HandlerFunctions.js";
 
 function App() {
   const [activities, setActivities] = useLocalStorageState("activities", {
     defaultValue: [],
   });
   const [weather, setWeather] = useState({});
+
+  // console.log(setActivities);
 
   useEffect(() => {
     async function getWeather() {
@@ -33,20 +36,6 @@ function App() {
     };
   }, []);
 
-  const filteredActivities = activities.filter((activity) => {
-    return activity.isForGoodWeather === weather.isGoodWeather;
-  });
-
-  function handleAddActivity(newActivity) {
-    setActivities([
-      ...activities,
-      {
-        id: uid(),
-        ...newActivity,
-      },
-    ]);
-  }
-
   function handleDeleteActivity(idToDelete) {
     setActivities(
       activities.filter((activity) => {
@@ -54,6 +43,10 @@ function App() {
       })
     );
   }
+
+  const filteredActivities = activities.filter((activity) => {
+    return activity.isForGoodWeather === weather.isGoodWeather;
+  });
 
   return (
     <div className="App">
@@ -64,7 +57,11 @@ function App() {
         isGoodWeather={weather.isGoodWeather}
         onDeleteActivity={handleDeleteActivity}
       />
-      <Form onAddActivity={handleAddActivity} />
+      <Form
+        onAddActivity={handleAddActivity}
+        activities={activities}
+        setActivitiesFunction={setActivities}
+      />
     </div>
   );
 }

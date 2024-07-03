@@ -1,4 +1,8 @@
-export default function Form({ onAddActivity }) {
+export default function Form({
+  onAddActivity,
+  activities,
+  setActivitiesFunction,
+}) {
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -7,7 +11,7 @@ export default function Form({ onAddActivity }) {
       name: event.target.name.value,
     };
 
-    onAddActivity(newActivity);
+    onAddActivity(newActivity, activities, setActivitiesFunction);
     event.target.reset();
     event.target.elements.name.focus();
   }
