@@ -1,18 +1,18 @@
 import { uid } from "uid";
 
-export function handleAddActivity(newActivity, setActivities, activities) {
-  console.log("new Activity", newActivity);
-  console.log("setActivities", setActivities);
-  console.log("activities", activities);
+export function handleAddActivity(newActivity, activities, setActivities) {
+  // console.log("new Activity", newActivity);
+  // console.log("setActivities", setActivities);
+  console.log("Hi");
 
-  setActivities(newActivity);
-  // setActivities([
-  //   ...activities,
-  //   {
-  //     id: uid(),
-  //     ...newActivity,
-  //   },
-  // ]);
+  // setActivities(newActivity);
+  setActivities([
+    ...activities,
+    {
+      id: uid(),
+      ...newActivity,
+    },
+  ]);
 }
 
 // export function handleDeleteActivity(idToDelete) {

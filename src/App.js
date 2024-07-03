@@ -5,7 +5,7 @@ import List from "./components/List";
 // import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 import WeatherDisplay from "./components/WeatherDisplay";
-import { handleAddActivity } from "./HandlerFunctions.js";
+import { handleAddActivity } from "./handlerFunctions";
 
 function App() {
   const [activities, setActivities] = useLocalStorageState("activities", {
